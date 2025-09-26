@@ -5,22 +5,24 @@
   --font-rubik: Rubik, sans-serif;
 
   --color-transparent: transparent;
-  --color-primary: #061539;
-  --color-secondary1: #5ba600;
+  --color-primary1: #372727;
+  --color-secondary1: #1b1a1a;
   --color-nu10: #ffffff;
   --color-nu20: #000000;
-  --color-nu30: #0d1741;
-  --color-nu40: #f3f3f3;
-  --color-nu50: #605dff;
-  --color-nu60: #e7e7e7;
-  --color-nu70: #5ba6003a;
-
-  --color-nu60: #e7e7e7;
-  --color-nu60: #e7e7e7;
-  --color-nu60: #e7e7e7;
-  --color-nu60: #e7e7e7;
-  --color-nu60: #e7e7e7;
-  --color-nu60: #e7e7e7;
+  --color-nu30: #1b1a1ab2;
+  --color-nu40: #3c393b;
+  --color-nu50: #5c5b5b;
+  --color-nu60: #1b1a1ab2;
+  --color-nu70: #3c393b;
+  --color-nu80: #d2b48c;
+  --color-nu90: #ea4744;
+  --color-nu100: #1b1a1a99;
+  --color-nu101: #e3b577;
+  --color-nu102: #242222;
+  --color-nu103: #eceae3;
+  --color-nu104: #fa8f21;
+  --color-nu105: #F4F3F0;
+  --color-nu106: #F5F4F1;
 
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;

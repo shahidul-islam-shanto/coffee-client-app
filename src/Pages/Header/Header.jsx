@@ -10,6 +10,11 @@ const Header = () => {
         </Link>
       </li>
       <li>
+        <Link to={"/addCoffee"} className="text-nu10">
+          Add Coffee
+        </Link>
+      </li>
+      <li>
         <Link to={"/users"} className="text-nu10">
           Users
         </Link>
@@ -18,7 +23,7 @@ const Header = () => {
   );
   return (
     <>
-      <div className="py-6 bg-primary">
+      <div className="py-6 bg-primary1">
         <div className="container-2">
           <nav className="flex justify-between items-center gap-4 ">
             <div className="">
