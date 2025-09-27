@@ -33,7 +33,18 @@ const Header = () => {
               <div className="flex items-center gap-6 ">{navBer}</div>
             </div>
             <div className="flex items-center gap-8">
-              <div className="">Search</div>
+              <div className="">
+                 <Link to={"/login"}>
+                  <button className="px-4 py-2 bg-nu104 rounded-xl mr-3">
+                    Login
+                  </button>
+                </Link>
+                <Link to={"/register"}>
+                  <button className="px-4 py-2 bg-nu104 rounded-xl">
+                    Sing Up
+                  </button>
+                </Link>
+              </div>
             </div>
           </nav>
         </div>
