@@ -54,9 +54,9 @@ const AddCoffee = () => {
               onSubmit={handleAddCoffee}
               className="bg-nu105 rounded-2xl px-10 py-10 w-full space-y-4"
             >
-              <h1 className="text-xl font-bold text-center">
-                Login your account
-              </h1>
+              <h2 className="font-bold text-center">
+                Create Coffee
+              </h2>
 
               {/* Email */}
               <div className="grid grid-cols-12 gap-6">
