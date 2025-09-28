@@ -1,11 +1,52 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
+import auth from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
+
 const AuthProvider = ({ children }) => {
-  const [coffee, setCoffee] = useState(null);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  // login user
+  const singInEmailPassword = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  // log out user
+  const logOutUser = () => {
+    setLoading(true);
+    signOut(auth);
+  };
+
+  //  current user observer
+  // useEffect(() => {
+  //   const unSubscribe = onAuthStateChanged(auth, (allUser) => {
+  //     console.log("current user observer", allUser);
+  //     setUser(allUser);
+  //     setLoading(false);
+  //   });
+  //   return () => {
+  //     unSubscribe();
+  //   };
+  // }, []);
 
   const authInfo = {
-    coffee,
+    user,
+    createUser,
+    singInEmailPassword,
+    logOutUser,
   };
 
   return (

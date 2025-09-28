@@ -1,12 +1,55 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+
+  const handleCoffeeForm = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(email, password);
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        const createdAt = result.user?.metadata?.creationTime;
+        const user = { email, createdAt: createdAt };
+        fetch("http://localhost:5000/user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.insertedId) {
+              Swal.fire({
+                title: "success!",
+                text: "User Added Successfully",
+                icon: "success",
+                confirmButtonText: "Ok",
+              });
+            }
+          });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   return (
-    <div>
-      <div className="py-20 bg-nu10">
+    <>
+      <div className="bg-nu10">
         <div className="container-2">
           <div className="min-h-screen flex items-center justify-center bg-gray-50">
-            <form className="bg-white shadow-md rounded-2xl px-10 py-10 w-full max-w-2xl space-y-4">
+            <form
+              onSubmit={handleCoffeeForm}
+              className="bg-white shadow-md rounded-2xl px-10 py-10 w-full max-w-2xl space-y-4"
+            >
               <h1 className="text-xl font-bold text-center">
                 Login your account
               </h1>
@@ -14,7 +57,7 @@ const Register = () => {
               {/* Email */}
               <div>
                 <label htmlFor="name" className="block mb-1 font-semibold">
-                  Name
+                  Email
                 </label>
                 <input
                   type="email"
@@ -27,7 +70,7 @@ const Register = () => {
               {/* Password */}
               <div>
                 <label htmlFor="email" className="block mb-1 font-semibold">
-                  Email
+                  Password
                 </label>
                 <input
                   type="password"
@@ -40,7 +83,7 @@ const Register = () => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full text-white py-2 rounded-xl bg-secondary1 duration-500  font-bold"
+                className="w-full text-white py-2 rounded-xl bg-secondary1 duration-500 cursor-pointer  font-bold"
               >
                 Register
               </button>
@@ -48,7 +91,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
