@@ -15,7 +15,7 @@ const Header = () => {
         </Link>
       </li>
       <li>
-        <Link to={"/users"} className="text-nu10">
+        <Link to={"/showUsers"} className="text-nu10">
           Users
         </Link>
       </li>
