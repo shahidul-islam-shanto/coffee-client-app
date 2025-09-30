@@ -15,6 +15,23 @@ const Login = () => {
     singInEmailPassword(email, password)
       .then((result) => {
         console.log(result.user);
+        const users = {
+          email,
+          lastLoggedAt: result.user?.metadata?.lastSignInTime,
+        };
+
+        // last logged in the database
+        fetch("http://localhost:5000/showUsers", {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(users),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
       })
       .catch((error) => {
         console.error(error);
@@ -64,7 +81,7 @@ const Login = () => {
                 type="submit"
                 className="w-full text-white py-2 rounded-xl bg-secondary1 duration-500 cursor-pointer  font-bold"
               >
-                Register
+                Login
               </button>
             </form>
           </div>
